@@ -16,4 +16,7 @@ local lazy = require 'lazy'
 
 vim.g.mapleader = ' '
 
-lazy.setup('malware.plugins')
+lazy.setup {
+   { import = 'malware.plugins' },
+   { import = 'malware.plugins.lsp' },
+}
