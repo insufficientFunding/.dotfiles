@@ -48,6 +48,7 @@
   "triptych.nvim": { "branch": "main", "commit": "7a416c7b7760699d8ffcacac330ff1559cc29a63" },
   "vim-be-good": { "branch": "master", "commit": "4fa57b7957715c91326fcead58c1fa898b9b3625" },
   "vim-fugitive": { "branch": "master", "commit": "011cf4fcb93a9649ffc6dcdff56ef948f5d0f7cc" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "38b1d0402c4600543281dc85b3f51884205674b6" },
   "vista.vim": { "branch": "master", "commit": "290b815cd5a5ff1fb65a48936633d93e2bf14dbd" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
