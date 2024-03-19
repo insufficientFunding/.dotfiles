@@ -1,4 +1,4 @@
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
-require('malware.lazy')
-require('malware.config')
+require('config.options')
+require('lazynvim')
