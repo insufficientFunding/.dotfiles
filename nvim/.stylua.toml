@@ -1,4 +1,4 @@
 column_width = 80
 quote_style = 'AutoPreferSingle'
-collapse_simple_statement = 'Always'
+collapse_simple_statement = 'ConditionalOnly'
 indent_width = 2

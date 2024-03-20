@@ -29,7 +29,22 @@ return {
     opts = {
       highlighter = {
         auto_enable = true,
-      }
+      },
+    },
+  },
+
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      mappings = false,
+    },
+    keys = {
+      {
+        '<leader>/',
+        '<ESC> <CMD> lua require("Comment.api").toggle.linewise(vim.fn.visualmode()) <CR>',
+        desc = 'Toggle comment',
+        mode = { 'n', 'v' },
+      },
     },
   },
 }

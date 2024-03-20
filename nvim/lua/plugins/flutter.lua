@@ -1,7 +1,7 @@
 return {
-
-  'akinsho/flutter-tools.nvim',
-  lazy = false,
+  dir = '~/workspace/flutter-tools.nvim',
+  -- 'akinsho/flutter-tools.nvim',
+  event = { 'BufReadPre *.dart' },
   dependencies = {
     'nvim-lua/plenary.nvim',
     'stevearc/dressing.nvim',
@@ -13,18 +13,5 @@ return {
       desc = 'Open flutter commands',
     },
   },
-  config = function()
-    require('flutter-tools').setup({
-      widget_guides = { enabled = true },
-
-      lsp = {
-        on_attach = function(client, bufnr)
-          require('config.plugins.lspconfig').on_attach(client, bufnr)
-          vim.cmd('highlight FlutterWidgetGuides guifg=#505050')
-        end,
-      },
-    })
-
-    require('telescope').load_extension('flutter')
-  end,
+  config = require('config.plugins.flutter').setup,
 }

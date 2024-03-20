@@ -9,6 +9,7 @@ return {
     'hrsh7th/cmp-path',
     'chrisgrieser/cmp-nerdfont',
     'onsails/lspkind.nvim',
+    'hrsh7th/cmp-cmdline',
   },
   opts = require('config.plugins.cmp'),
 }

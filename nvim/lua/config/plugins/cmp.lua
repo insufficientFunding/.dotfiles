@@ -2,7 +2,7 @@ return function()
   local cmp = require('cmp')
 
   local formatting_style = {
-    fields = { "abbr", "kind" },
+    fields = { 'abbr', 'kind' },
 
     format = function(entry, item)
       local kind = require('lspkind').cmp_format({
@@ -11,7 +11,6 @@ return function()
         show_labelDetails = true,
         symbol_map = { Copilot = '' },
       })(entry, item)
-
       kind.kind = item.kind
 
       return kind
@@ -67,29 +66,45 @@ return function()
         else
           cmp.complete()
         end
-      end),
+      end, { 'i', 'c' }),
 
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif require('luasnip').expand_or_jumpable() then
-          vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+          vim.fn.feedkeys(
+            vim.api.nvim_replace_termcodes(
+              '<Plug>luasnip-expand-or-jump',
+              true,
+              true,
+              true
+            ),
+            ''
+          )
         else
           fallback()
         end
-      end, { 'i', 's' }),
+      end, { 'i', 's', 'c' }),
 
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif require('luasnip').jumpable(-1) then
-          vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+          vim.fn.feedkeys(
+            vim.api.nvim_replace_termcodes(
+              '<Plug>luasnip-jump-prev',
+              true,
+              true,
+              true
+            ),
+            ''
+          )
         else
           fallback()
         end
-      end, { 'i', 's' }),
+      end, { 'i', 's', 'c' }),
     },
-    sources = {
+    sources = cmp.config.sources({
       {
         name = 'nvim_lsp',
         entry_filter = function(entry, _)
@@ -100,8 +115,22 @@ return function()
       { name = 'nvim_lua' },
       { name = 'path' },
       { name = 'nerdfont' },
-    },
+    }),
   }
+
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' },
+    }, {
+      {
+        name = 'cmdline',
+        option = {
+          ignore_cmds = { 'Man', '!' },
+        },
+      },
+    }),
+  })
 
   return options
 end

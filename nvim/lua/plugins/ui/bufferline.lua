@@ -19,8 +19,8 @@ return {
   init = function()
     require('bufferline').setup({
       options = {
-        separator_style = 'slope',
-        themable = true,
+        separator_style = 'slant',
+        --themable = false,
         diagnostics = 'nvim_lsp',
         offsets = {
           {

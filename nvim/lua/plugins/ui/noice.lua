@@ -7,13 +7,19 @@ return {
     'nvim-telescope/telescope.nvim',
   },
   opts = {
-    lsp = {
-      override = {
-        ['vim.lsp.utils.convert_input_to_markdown_lines'] = true,
-        ['vim.lsp.utils.stylize_markdown'] = true,
-        ['cmp.entry.get_documentation'] = true,
-      },
-    },
+    -- lsp = {
+    --   override = {
+    --     ['vim.lsp.utils.convert_input_to_markdown_lines'] = true,
+    --     ['vim.lsp.utils.stylize_markdown'] = true,
+    --     ['cmp.entry.get_documentation'] = true,
+    --   },
+    --   hover = {
+    --     enabled = false,
+    --   },
+    --   signature = {
+    --     enabled = false,
+    --   },
+    -- },
     cmdline = {
       view = 'cmdline',
     },

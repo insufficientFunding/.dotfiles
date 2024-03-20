@@ -3,6 +3,7 @@ local opt = vim.opt
 opt.clipboard = 'unnamedplus'
 
 opt.mouse = ''
+opt.cursorline = true
 
 opt.hidden = true
 

@@ -5,15 +5,16 @@ return {
 
   dependencies = {
     'nvim-lua/plenary.nvim',
-    {'nvim-telescope/telescope-fzf-native.nvim', build ='make'},
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'nvim-telescope/telescope-ui-select.nvim',
   },
 
   keys = {
-    {'<leader>ff', '<Cmd> Telescope find_files <CR>', desc = 'Find files' },
+    { '<leader>ff', '<Cmd> Telescope find_files <CR>', desc = 'Find files' },
+    { '<leader>fg', '<Cmd> Telescope live_grep <CR>', desc = 'Live grep' },
   },
 
-  config = function() 
+  config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
 

@@ -2,12 +2,17 @@ return {
   'echasnovski/mini.nvim',
   version = false,
   lazy = true,
-  config = require('config.plugins.mini'),
+  config = require('config.plugins.mini').setup,
   keys = {
     {
       '<C-s>',
-      '<Cmd>lua require("mini.sessions").select()<CR>',
+      '<CMD> lua require("mini.sessions").select() <CR>',
       desc = 'Pick session',
+    },
+    {
+      '<LEADER>sn',
+      '<CMD> lua require("config.plugins.mini").write() <CR>',
+      desc = 'Write new session',
     },
   },
 }

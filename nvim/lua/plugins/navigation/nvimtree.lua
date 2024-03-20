@@ -2,9 +2,17 @@ return {
   'nvim-tree/nvim-tree.lua',
   opts = {
     disable_netrw = true,
+    hijack_netrw = true,
+    hijack_cursor = true,
+    hijack_unnamed_buffer_when_opening = false,
+    sync_root_with_cwd = true,
     renderer = {
       indent_width = 1,
+      indent_markers = { enable = true },
+
       highlight_git = 'none',
+      highlight_opened_files = 'none',
+
       icons = {
         glyphs = {
           git = {
@@ -25,9 +33,10 @@ return {
       show_on_open_dirs = false,
     },
     git = {
+      enable = true,
       show_on_open_dirs = false,
+      ignore = true,
     },
-
   },
   keys = {
     {
