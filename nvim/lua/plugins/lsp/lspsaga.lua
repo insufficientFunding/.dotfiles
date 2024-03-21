@@ -25,6 +25,9 @@ return {
     diagnostic = {
       max_width = 0.4,
     },
+    outline = {
+      win_width = 40,
+    },
   },
   config = function(_, opts)
     require('lspsaga').setup(opts)

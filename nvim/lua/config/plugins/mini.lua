@@ -15,9 +15,9 @@ local sessions_config = {
 --- Setup the mini main plugin
 function M.setup()
   require('mini.sessions').setup(sessions_config)
-  require('mini.move').setup()
-  require('mini.pairs').setup()
-  require('mini.surround').setup()
+  require('mini.move').setup({})
+  require('mini.pairs').setup({})
+  require('mini.surround').setup({})
 end
 
 --- Open a field to select a name for the session to write

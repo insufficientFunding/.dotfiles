@@ -13,9 +13,9 @@ return {
         section_separators = { left = '', right = '' },
         ignore_focus = { 'NvimTree' },
       },
-      sections = {
-        lualine_z = { 'datetime' },
-      },
+      -- sections = {
+      --   lualine_z = { 'datetime' },
+      -- },
     }
   end,
 }

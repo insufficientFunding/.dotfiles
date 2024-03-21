@@ -33,7 +33,18 @@ function M.setup()
     severity_sort = true,
   })
 
-  local servers = { 'lua_ls', 'tsserver' }
+  vim.api.nvim_create_user_command('LuaLSPluginDev', function()
+    M.setup_lua({
+      enabled = true,
+      plugins = true,
+      runtime = true,
+      types = true,
+    })
+  end, {
+    desc = 'Setup Lua language server with plugins',
+  })
+
+  local servers = { 'lua_ls', 'tsserver', 'jsonls', 'cssls' }
 
   for _, server in ipairs(servers) do
     lspconfig[server].setup({
@@ -41,6 +52,74 @@ function M.setup()
       capabilities = M.capabilities(),
     })
   end
+
+  M.setup_lua({
+    enabled = true,
+    plugins = false,
+    runtime = true,
+    types = false,
+  })
+end
+
+---@class LuaLSOptions
+---@field enabled boolean
+---@field plugins boolean|string
+---@field runtime boolean|table<string>
+---@field types boolean
+
+--- Gets the Lua library for the Lua language server.
+--- This is used to provide the Lua language server with the neovim runtime.
+--- @param opts LuaLSOptions
+--- @return table
+local function get_lua_library(opts)
+  local returned = {}
+
+  local function add(lib, filter)
+    ---@diagnostic disable-next-line: param-type-mismatch
+    for _, p in ipairs(vim.fn.expand(lib .. '/lua', false, true)) do
+      local plugin_name = vim.fn.fnamemodify(p, ':h:t')
+      ---@diagnostic disable-next-line: undefined-field
+      p = vim.loop.fs_realpath(p)
+      if p and (not filter or filter[plugin_name]) then
+        table.insert(returned, p)
+      end
+    end
+  end
+
+  if opts.runtime then
+    add(type(opts.runtime) == 'string' and opts.runtime or '$VIMRUNTIME')
+  end
+
+  if opts.plugins then
+    ---@type table<string, boolean>
+    local filter
+    if type(opts.plugins) == 'table' then
+      filter = {}
+      ---@diagnostic disable-next-line: param-type-mismatch
+      for _, plugin in pairs(opts.plugins) do
+        filter[plugin] = true
+      end
+    end
+    for _, site in pairs(vim.split(vim.o.packpath, ',')) do
+      add(site .. '/pack/*/opt/*', filter)
+      add(site .. '/pack/*/start/*', filter)
+    end
+    if package.loaded['lazy'] then
+      for _, plugin in ipairs(require('lazy').plugins()) do
+        add(plugin.dir, filter)
+      end
+    end
+  end
+
+  return returned
+end
+
+--- Sets up the Lua language server.
+--- @param opts LuaLSOptions
+function M.setup_lua(opts)
+  local lspconfig = require('lspconfig')
+
+  local library = get_lua_library(opts)
 
   lspconfig['lua_ls'].setup({
     on_attach = M.on_attach,
@@ -51,10 +130,7 @@ function M.setup()
           globals = { 'vim' },
         },
         workspace = {
-          library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('config') .. '/lua'] = true,
-          },
+          library = library,
         },
       },
     },

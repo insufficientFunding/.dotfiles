@@ -17,6 +17,22 @@ return {
   },
 
   {
+    enabled = false,
+    dir = '~/workspace/cosco.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = 'InsertEnter',
+    opts = {},
+    keys = {
+      {
+        '<C-;>',
+        '<cmd>lua require("cosco.line_endings").add_line_ending()<CR>',
+        desc = 'Add line ending',
+        mode = 'i',
+      },
+    },
+  },
+
+  {
     'uga-rosa/ccc.nvim',
     lazy = true,
     keys = {

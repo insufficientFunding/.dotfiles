@@ -1,7 +1,7 @@
 return {
   'echasnovski/mini.nvim',
   version = false,
-  lazy = true,
+  lazy = false,
   config = require('config.plugins.mini').setup,
   keys = {
     {

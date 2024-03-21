@@ -24,7 +24,7 @@ return {
         highlight = { enable = true },
         indent = {
           enable = true,
-          disable = { 'lua', 'dart' },
+          -- disable = { 'lua', 'dart' },
         },
       })
     end,
