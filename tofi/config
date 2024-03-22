@@ -1,0 +1,10 @@
+font = /usr/share/fonts/TTF/CascadiaCodeNerdFont.ttf
+font-size = 20
+
+include = theme
+
+text-cursor = true
+hide-cursor = true
+
+matching-algorithm = fuzzy
+drun-launch = true

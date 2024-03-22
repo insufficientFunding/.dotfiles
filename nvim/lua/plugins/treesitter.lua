@@ -19,12 +19,30 @@ return {
       local configs = require('nvim-treesitter.configs')
 
       configs.setup({
-        ensure_installed = { 'lua', 'vimdoc', 'vim' },
+        ensure_installed = {
+          'lua',
+          'vimdoc',
+          'vim',
+          'markdown',
+          'markdown_inline',
+          'hyprlang',
+          'bash',
+          'jsonc',
+        },
         sync_install = false,
         highlight = { enable = true },
         indent = {
           enable = true,
           -- disable = { 'lua', 'dart' },
+        },
+      })
+
+      vim.filetype.add({
+        extension = { rasi = 'rasi' },
+        pattern = {
+          ['.*/waybar/config'] = 'jsonc',
+          ['.*/kitty/*.conf'] = 'bash',
+          ['.*/hypr/.*%.conf'] = 'hyprlang',
         },
       })
     end,

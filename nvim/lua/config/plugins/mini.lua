@@ -12,12 +12,26 @@ local sessions_config = {
   },
 }
 
+local surround_config = {
+  mappings = {
+    add = 'sa',
+    delete = 'sd',
+    find = 'sf',
+    find_left = 'sF',
+    highlight = 'sh',
+    replace = 'sr',
+    update_n_lines = 'sn',
+
+    suffic_last = 'l',
+    suffix_next = 'n',
+  },
+}
+
 --- Setup the mini main plugin
 function M.setup()
+  require('mini.surround').setup()
   require('mini.sessions').setup(sessions_config)
   require('mini.move').setup({})
-  require('mini.pairs').setup({})
-  require('mini.surround').setup({})
 end
 
 --- Open a field to select a name for the session to write

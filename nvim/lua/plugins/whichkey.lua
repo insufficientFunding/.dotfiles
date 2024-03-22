@@ -2,7 +2,7 @@ return {
   'folke/which-key.nvim',
   event = 'VeryLazy',
   opts = {
-    triggers = { '<LEADER>', '"', "'", '`', 'c', 'v', 'g' },
+    triggers = { '<LEADER>', '"', "'", '`', 'c', 'v', 'g', 's' },
   },
   config = function(_, opts)
     vim.o.timeout = true

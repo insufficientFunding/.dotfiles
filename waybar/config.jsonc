@@ -23,7 +23,7 @@
     "custom/spotify",
     "custom/r_end",
     "",
-    "custom/padd"
+    "custom/padd",
   ],
   "modules-center": [
     "custom/padd",
@@ -31,7 +31,7 @@
     "idle_inhibitor",
     "clock",
     "custom/r_end",
-    "custom/padd"
+    "custom/padd",
   ],
   "modules-right": [
     "custom/padd",
@@ -47,7 +47,7 @@
     "pulseaudio#microphone",
     "custom/keybindhint",
     "custom/r_end",
-    "custom/padd"
+    "custom/padd",
   ],
   // sourced from modules based on config.ctl //
   "custom/power": {
@@ -56,7 +56,7 @@
     "exec": "echo ; echo  logout",
     "on-click": "/home/malware/.config/hyprdots/scripts/logoutlaunch.sh 2",
     "interval": 86400, // once every day
-    "tooltip": true
+    "tooltip": true,
   },
   "custom/cliphist": {
     "format": " {}",
@@ -66,7 +66,7 @@
     "on-click-right": "sleep 0.1 && /home/malware/.config/hyprdots/scripts/cliphist.sh d",
     "on-click-middle": "sleep 0.1 && /home/malware/.config/hyprdots/scripts/cliphist.sh w",
     "interval": 86400, // once every day
-    "tooltip": true
+    "tooltip": true,
   },
   "custom/wbar": {
     "format": " {}", //    //
@@ -76,7 +76,7 @@
     "on-click-right": "/home/malware/.config/hyprdots/scripts/wbarconfgen.sh p",
     "on-click-middle": "sleep 0.1 && /home/malware/.config/hyprdots/scripts/quickapps.sh kitty firefox spotify code dolphin",
     "interval": 86400,
-    "tooltip": true
+    "tooltip": true,
   },
   // "custom/theme": {
   //   "format": " {}",
@@ -96,7 +96,7 @@
     "on-click-right": "/home/malware/.config/hyprdots/scripts/swwwallpaper.sh -p",
     "on-click-middle": "sleep 0.1 && /home/malware/.config/hyprdots/scripts/swwwallselect.sh",
     "interval": 86400, // once every day
-    "tooltip": true
+    "tooltip": true,
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -107,12 +107,10 @@
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
-    "ignore-list": [
-      "Alacritty"
-    ],
+    "ignore-list": ["Alacritty"],
     "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition"
-    }
+      "firefoxdeveloperedition": "firefox-developer-edition",
+    },
   },
   "custom/spotify": {
     "exec": "/usr/bin/python3 /home/malware/.config/waybar/modules/mediaplayer.py --player spotify",
@@ -126,15 +124,15 @@
     "on-scroll-down": "/home/malware/.config/hyprdots/scripts/volumecontrol.sh -p spotify d",
     "max-length": 25,
     "escape": true,
-    "tooltip": true
+    "tooltip": true,
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "rotate": 0,
     "format-icons": {
       "activated": "󰥔 ",
-      "deactivated": " "
-    }
+      "deactivated": " ",
+    },
   },
   "clock": {
     "format": "{:%I:%M %p}",
@@ -149,65 +147,43 @@
       "format": {
         "months": "<span color='#ffead3'><b>{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b>{}</b></span>"
-      }
+        "today": "<span color='#ff6699'><b>{}</b></span>",
+      },
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
-    }
+      "on-scroll-down": "shift_down",
+    },
   },
   "tray": {
     "icon-size": 18,
     "rotate": 0,
-    "spacing": 5
+    "spacing": 5,
   },
   "battery": {
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 20
+      "critical": 20,
     },
     "format": "{icon} {capacity}%",
     "rotate": 0,
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
-    "format-icons": [
-      "󰂎",
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ]
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   },
   "backlight": {
     "device": "intel_backlight",
     "rotate": 0,
     "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
+    "min-length": 6,
   },
   "network": {
     "tooltip": true,
@@ -228,24 +204,12 @@
     "format-connected": " {num_connections}",
     "format-connected-battery": "{icon} {num_connections}",
     // "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
-    "format-icons": [
-      "󰥇",
-      "󰤾",
-      "󰤿",
-      "󰥀",
-      "󰥁",
-      "󰥂",
-      "󰥃",
-      "󰥄",
-      "󰥅",
-      "󰥆",
-      "󰥈"
-    ],
+    "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
     // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device If this config option is not defined or none of the devices in the list are connected, it will fall back to showing the last connected device.
     "tooltip-format": "{controller_alias}\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
   },
   "pulseaudio": {
     "format": "{icon} {volume}",
@@ -264,12 +228,8 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    }
+      "default": ["", "", ""],
+    },
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
@@ -281,7 +241,7 @@
     "on-scroll-up": "/home/malware/.config/hyprdots/scripts/volumecontrol.sh -i i",
     "on-scroll-down": "/home/malware/.config/hyprdots/scripts/volumecontrol.sh -i d",
     "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
-    "scroll-step": 5
+    "scroll-step": 5,
   },
   "custom/keybindhint": {
     "format": " ",
@@ -292,36 +252,36 @@
   "custom/l_end": {
     "format": " ",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/r_end": {
     "format": " ",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/sl_end": {
     "format": " ",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/sr_end": {
     "format": " ",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/rl_end": {
     "format": " ",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/rr_end": {
     "format": " ",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/padd": {
     "format": "  ",
     "interval": "once",
-    "tooltip": false
-  }
+    "tooltip": false,
+  },
 }

@@ -17,6 +17,8 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         dart = { 'dart_format' },
+        json = { 'prettier' },
+        jsonc = { 'prettier' },
       },
 
       formatters = {

@@ -26,7 +26,7 @@ local mappings = {
 
   multiple_modes = {
     {
-      modes = { 'n', 't' },
+      modes = { 'n', 'i', 'v' },
       keys = {},
     },
   },
