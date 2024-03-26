@@ -19,7 +19,7 @@ opt.expandtab = true
 opt.smarttab = true
 opt.shiftround = true
 
-opt.smartindent = true
+opt.smartindent = false
 opt.breakindent = true
 
 opt.wrap = false

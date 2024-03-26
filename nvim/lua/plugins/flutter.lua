@@ -8,7 +8,7 @@ return {
   },
   keys = {
     {
-      '<leader>Fc',
+      '<leader>fc',
       '<CMD> Telescope flutter commands <CR>',
       desc = 'Open flutter commands',
     },

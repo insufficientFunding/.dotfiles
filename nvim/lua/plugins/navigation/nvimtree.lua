@@ -1,6 +1,9 @@
 return {
   'nvim-tree/nvim-tree.lua',
   opts = {
+    filters = {
+      custom = { '.g.dart' },
+    },
     disable_netrw = true,
     hijack_netrw = true,
     hijack_cursor = true,
@@ -10,10 +13,11 @@ return {
       indent_width = 1,
       indent_markers = { enable = true },
 
-      highlight_git = 'none',
+      highlight_git = true,
       highlight_opened_files = 'none',
 
       icons = {
+        git_placement = 'after',
         glyphs = {
           git = {
             unstaged = '',

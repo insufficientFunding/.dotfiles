@@ -19,6 +19,7 @@ return {
         dart = { 'dart_format' },
         json = { 'prettier' },
         jsonc = { 'prettier' },
+        typescript = { 'prettier' },
       },
 
       formatters = {

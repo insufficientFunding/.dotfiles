@@ -28,6 +28,7 @@ return {
           'hyprlang',
           'bash',
           'jsonc',
+          'dart',
         },
         sync_install = false,
         highlight = { enable = true },

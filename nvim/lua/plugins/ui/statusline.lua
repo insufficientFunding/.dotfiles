@@ -13,9 +13,10 @@ return {
         section_separators = { left = '', right = '' },
         ignore_focus = { 'NvimTree' },
       },
-      -- sections = {
-      --   lualine_z = { 'datetime' },
-      -- },
+      sections = {
+        lualine_c = { require('ui.statusline.recording_widget') },
+        lualine_y = { require('ui.statusline.session_widget') },
+      },
     }
   end,
 }

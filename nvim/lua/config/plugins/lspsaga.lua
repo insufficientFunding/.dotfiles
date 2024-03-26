@@ -43,12 +43,15 @@ function M.on_attach(_, bufnr)
         D = { command('show_buf_diagnostics'), 'Show buffer diagnostics' },
         r = { command('rename'), 'Rename' },
         f = { '<CMD> Lspsaga finder <CR>', 'Open finder' },
-        a = { command('code_action'), 'Code action' },
         o = { command('outline'), 'Open symbol outline' },
       },
       g = {
         name = '+goto',
         d = { command('goto_definition'), 'Go to definition' },
+      },
+      c = {
+        name = '+code',
+        a = { vim.lsp.buf.code_action, 'Code action' },
       },
     },
   }, {

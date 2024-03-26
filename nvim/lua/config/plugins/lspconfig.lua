@@ -36,9 +36,10 @@ function M.setup()
   vim.api.nvim_create_user_command('LuaLSPluginDev', function()
     M.setup_lua({
       enabled = true,
-      plugins = true,
+      plugins = { 'nvim-cmp', 'nvim-lspconfig' },
       runtime = true,
       types = true,
+      path_strict = true,
     })
   end, {
     desc = 'Setup Lua language server with plugins',
@@ -58,14 +59,16 @@ function M.setup()
     plugins = false,
     runtime = true,
     types = false,
+    path_strict = true,
   })
 end
 
 ---@class LuaLSOptions
 ---@field enabled boolean
----@field plugins boolean|string
+---@field plugins boolean|table<string>
 ---@field runtime boolean|table<string>
 ---@field types boolean
+---@field path_strict boolean
 
 --- Gets the Lua library for the Lua language server.
 --- This is used to provide the Lua language server with the neovim runtime.
@@ -81,7 +84,11 @@ local function get_lua_library(opts)
       ---@diagnostic disable-next-line: undefined-field
       p = vim.loop.fs_realpath(p)
       if p and (not filter or filter[plugin_name]) then
-        table.insert(returned, p)
+        if opts.path_strict then
+          table.insert(returned, p)
+        else
+          table.insert(returned, vim.fn.fnamemodify(p, ':h'))
+        end
       end
     end
   end

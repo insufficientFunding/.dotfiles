@@ -1,5 +1,6 @@
 return {
   'insufficientFunding/base46.nvim',
+  branch = 'main',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'akinsho/bufferline.nvim',

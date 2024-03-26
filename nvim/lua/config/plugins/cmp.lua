@@ -1,5 +1,17 @@
+local function has_words_before()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0
+    and vim.api
+        .nvim_buf_get_lines(0, line - 1, line, true)[1]
+        :sub(col, col)
+        :match('%s')
+      == nil
+end
+
 return function()
   local cmp = require('cmp')
+  local luasnip = require('luasnip')
 
   local formatting_style = {
     fields = { 'abbr', 'kind' },
@@ -17,19 +29,6 @@ return function()
     end,
   }
 
-  local function border(hl_name)
-    return {
-      { '╭', hl_name },
-      { '─', hl_name },
-      { '╮', hl_name },
-      { '│', hl_name },
-      { '╯', hl_name },
-      { '─', hl_name },
-      { '╰', hl_name },
-      { '│', hl_name },
-    }
-  end
-
   local options = {
     completion = {
       completeopt = 'menu,menuone',
@@ -41,21 +40,20 @@ return function()
         scrollbar = true,
       },
       documentation = {
-        border = border('CmpDocBorder'),
         winhighlight = 'Normal:CmpDoc',
       },
     },
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body)
+        luasnip.lsp_expand(args.body)
       end,
     },
 
     formatting = formatting_style,
 
     mapping = {
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-j>'] = cmp.mapping.scroll_docs(4),
       ['<C-e>'] = cmp.mapping.close(),
       ['<C-Space>'] = cmp.mapping(function(_)
         if cmp.visible() then
@@ -71,16 +69,10 @@ return function()
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif require('luasnip').expand_or_jumpable() then
-          vim.fn.feedkeys(
-            vim.api.nvim_replace_termcodes(
-              '<Plug>luasnip-expand-or-jump',
-              true,
-              true,
-              true
-            ),
-            ''
-          )
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        elseif has_words_before() then
+          cmp.complete()
         else
           fallback()
         end
@@ -89,16 +81,8 @@ return function()
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif require('luasnip').jumpable(-1) then
-          vim.fn.feedkeys(
-            vim.api.nvim_replace_termcodes(
-              '<Plug>luasnip-jump-prev',
-              true,
-              true,
-              true
-            ),
-            ''
-          )
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
         else
           fallback()
         end
