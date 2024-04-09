@@ -1,0 +1,6 @@
+require "init"
+
+down => {
+  alt + key "y" => insert "ø"
+}
+

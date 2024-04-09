@@ -1,0 +1,102 @@
+* {
+  all: unset;
+}
+
+$main-bg: #1d1b2d;
+$main-fg: #ebbcba;
+
+$alt-bg: #26233a;
+
+$wb-act-bg: #31748f;
+$wb-act-fg: #9ccfd8;
+
+$b-hvr-bg: #eb6f92;
+$wb-hvr-fg: #f6c177;
+
+.bar0,
+.bar1 {
+  background-color: rgba(0, 0, 0, 0);
+  color: $main-fg;
+  font-family: "Mona Sans";
+  font-size: 16px;
+}
+
+.bar {
+  background-color: $main-bg;
+  opacity: 0.8;
+  margin: 10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  padding: 0px;
+}
+
+.sidestuff {
+  color: $main-fg;
+}
+
+.clock {
+  padding-right: 20px;
+  color: $main-fg;
+}
+
+.archicon {
+  color: $wb-hvr-fg;
+  font-size: 30px;
+  padding-left: 5px;
+}
+
+.icon button {
+  color: $main-fg;
+  font-size: 30px;
+  border-radius: 20px;
+  margin: 2px;
+}
+
+.icon button:hover {
+  background-color: $alt-bg;
+  color: $wb-hvr-fg;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #d35d6e;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.metric scale trough highlight {
+  all: unset;
+  background-color: #d35d6e;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.workspace-button {
+  color: $main-fg;
+  padding: 10px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.workspace-active,
+.workspace-button:hover {
+  background-color: $alt-bg;
+  padding-bottom: 8px;
+  color: $wb-act-fg;
+  border-bottom: 2px solid $wb-act-bg;
+}

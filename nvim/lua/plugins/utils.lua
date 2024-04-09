@@ -17,6 +17,11 @@ return {
   },
 
   {
+    'elkowar/yuck.vim',
+    lazy = false,
+  },
+
+  {
     enabled = false,
     dir = '~/workspace/cosco.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -57,9 +62,14 @@ return {
     keys = {
       {
         '<leader>/',
+        '<CMD> lua require("Comment.api").toggle.linewise.current() <CR>',
+        desc = 'Toggle comment',
+      },
+      {
+        '<leader>/',
         '<ESC> <CMD> lua require("Comment.api").toggle.linewise(vim.fn.visualmode()) <CR>',
         desc = 'Toggle comment',
-        mode = { 'n', 'v' },
+        mode = { 'v' },
       },
     },
   },

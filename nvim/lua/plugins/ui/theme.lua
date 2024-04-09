@@ -1,14 +1,17 @@
 return {
-  'insufficientFunding/base46.nvim',
-  branch = 'main',
+  -- 'insufficientFunding/base46.nvim',
+  dir = '~/workspace/base46',
+  -- 'insufficientFunding/base46.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'akinsho/bufferline.nvim',
+    'insufficientFunding/bufferline.nvim',
   },
   config = function()
     require('base46').setup({
       theme = 'rosepine',
       integrations = {
+        'neotree',
+        'dap',
         'lsp',
         'bufferline',
         'treesitter',

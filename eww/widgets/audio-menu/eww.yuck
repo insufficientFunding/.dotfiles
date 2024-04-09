@@ -1,0 +1,42 @@
+(defwindow audio_menu
+  :monitor 0
+  :exclusive false
+  :stacking "overlay"
+  :namespace "ewwaudio"
+  :geometry (geometry :anchor "top right" :x 0 :y 0)
+(audio_event))
+
+(defwidget audio_event []
+  (eventbox :onhoverlost "scripts/audio-menu.sh"
+            (revealer :transition "slideleft" :reveal "true" :duration "10000ms"
+                      (audio_menu))))
+
+(defwidget audio_menu []
+  (box :orientation "vertical"
+       :class "parent"
+       :space-evenly false
+       (slider)
+       ))
+
+
+(defwidget slider []
+  (box :orientation "h"
+       :class "volume"
+       :space-evenly false
+       :halign "end"
+       :spacing 0
+       (button :onclick "scripts/volume.sh --toggle"
+               :width 40
+               volume-icon)
+       (scale :min 0
+              :max 101
+              :active { volume != "Mute" }
+              :value volume
+              :onchange "amixer -D pipewire sset Master {}%")
+       ))
+
+(defpoll volume :interval "100ms"
+  "scripts/volume.sh --get")
+
+(defpoll volume-icon :interval "100ms"
+  "scripts/volume.sh --icon")

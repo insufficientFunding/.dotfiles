@@ -1,8 +1,8 @@
 return {
-  'akinsho/bufferline.nvim',
-  version = '*',
+  'insufficientFunding/bufferline.nvim',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
+    'nvim-neo-tree/neo-tree.nvim',
   },
   keys = {
     {
@@ -17,16 +17,22 @@ return {
     },
   },
   init = function()
+    _G.__cached_neo_tree_selector = nil
+    _G.__get_selector = function()
+      return _G.__cached_neo_tree_selector
+    end
+
     require('bufferline').setup({
       options = {
-        separator_style = 'slant',
-        --themable = false,
+        -- separator_style = 'slant',
+        themable = true,
         diagnostics = 'nvim_lsp',
         offsets = {
           {
-            filetype = 'NvimTree',
-            text = 'File Explorer',
-            separator = false,
+            filetype = 'neo-tree',
+            raw = '%{%v:lua._G.__get_selector()%} ',
+            highlight = { sep = { link = 'WinSeparator' } },
+            separator = ' ',
           },
         },
         show_close_icon = false,

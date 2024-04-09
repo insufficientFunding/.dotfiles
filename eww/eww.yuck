@@ -1,0 +1,122 @@
+(defwidget bar0 []
+  (box :class "bar"
+       (centerbox 
+         :orientation "h"
+         (side-left :monitor 0)
+         (clock)
+         (sidestuff))))
+
+
+(defwidget bar1 []
+  (box :class "bar"
+       (centerbox 
+         :orientation "h"
+         (side-left :monitor 1)
+         (clock)
+         (sidestuff))))
+
+(defwidget side-left [monitor]
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "start"
+       (box :width 40 :class "archicon"
+         "")
+       (workspaceWidget :monitor monitor)
+       ))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+       (audio)
+       (network)
+       ))
+
+(deflisten workspaces "/home/malware/.cargo/bin/hyprland-workspaces _")
+
+(defwidget workspaceWidget [monitor]
+  (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
+            (box :class "workspaces" :space-evenly false
+                 (for i in {workspaces[monitor].workspaces}
+                      (button
+                        :width 40
+                        :onclick "hyprctl dispatch workspace ${i.id}"
+                        :class "${i.class}"
+                        "${i.name}")))))
+
+(defwidget clock []
+  (box :class "clock"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+       time))
+
+(defwidget audio []
+  (box :class "audio icon"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+       (button :onclick "scripts/audio-menu.sh" 
+               :width 40 audio-icon)))
+
+(defpoll audio-icon :interval "1s"
+  "widgets/audio-menu/scripts/volume.sh --icon")
+
+(defwidget network []
+  (box :class "network icon"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+       :spacing 10
+       (button :onclick "scripts/network.sh ShowInfo" 
+               :width 40
+               network)))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+       (box :class "label" label)
+       (scale :min 0
+              :max 101
+              :active { onchange != "" }
+              :value value
+              :onchange onchange)
+       ))
+
+(defpoll time :interval "5s"
+  "scripts/date-time.sh")
+
+(defpoll network :interval "30s"
+  "scripts/network.sh")
+
+(defpoll volume :interval "1s"
+  "scripts/volume.sh")
+
+(defwindow bar0 
+  :monitor 0
+  :windowtype "dock"
+  :stacking "bt"
+  :exclusive true
+  :focusable false
+  :namespace "ewwbar"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "40px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "30px")
+
+  (bar0))
+
+(defwindow bar1
+  :monitor 1
+  :windowtype "dock"
+  :stacking "bt"
+  :exclusive true
+  :focusable false
+  :namespace "ewwbar"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "40px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "30px")
+
+  (bar1))

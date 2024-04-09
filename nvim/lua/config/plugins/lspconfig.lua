@@ -36,7 +36,7 @@ function M.setup()
   vim.api.nvim_create_user_command('LuaLSPluginDev', function()
     M.setup_lua({
       enabled = true,
-      plugins = { 'nvim-cmp', 'nvim-lspconfig' },
+      plugins = { 'nvim-cmp', 'nvim-lspconfig', 'nvim-dap-ui', 'nvim-dap' },
       runtime = true,
       types = true,
       path_strict = true,
@@ -45,7 +45,7 @@ function M.setup()
     desc = 'Setup Lua language server with plugins',
   })
 
-  local servers = { 'lua_ls', 'tsserver' }
+  local servers = { 'lua_ls', 'tsserver', 'cssls' }
 
   for _, server in ipairs(servers) do
     lspconfig[server].setup({

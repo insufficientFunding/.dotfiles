@@ -34,12 +34,12 @@ return {
         highlight = { enable = true },
         indent = {
           enable = true,
-          -- disable = { 'lua', 'dart' },
+          disable = { 'yuck' },
         },
       })
 
       vim.filetype.add({
-        extension = { rasi = 'rasi' },
+        extension = { rasi = 'rasi', yuck = 'yuck' },
         pattern = {
           ['.*/waybar/config'] = 'jsonc',
           ['.*/kitty/*.conf'] = 'bash',

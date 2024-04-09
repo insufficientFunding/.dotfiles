@@ -1,0 +1,55 @@
+$main-bg: #26233a;
+$main-fg: #ebbcba;
+
+$alt-bg: #2e2b47;
+
+$wb-act-bg: #31748f;
+$wb-act-fg: #9ccfd8;
+
+$b-hvr-bg: #eb6f92;
+$wb-hvr-fg: #f6c177;
+
+* {
+  all: unset;
+}
+
+.audio_menu {
+  font-family: "Mona Sans";
+  font-size: 16px;
+}
+
+.parent {
+  padding: 20px;
+  background-color: $main-bg;
+  border-radius: 10px;
+  border: 3px solid $b-hvr-bg;
+  color: $main-fg;
+}
+
+.volume {
+  font-size: 32px;
+}
+
+.volume button {
+  border-radius: 5px;
+}
+
+.volume button:hover {
+  background-color: $alt-bg;
+  color: $wb-hvr-fg;
+}
+
+.volume scale trough highlight {
+  all: unset;
+  background-color: $wb-hvr-fg;
+  border-radius: 10px;
+}
+
+.volume scale trough {
+  all: unset;
+  background-color: $alt-bg;
+  border-radius: 50px;
+  min-height: 5px;
+  min-width: 80px;
+  margin-left: 10px;
+}

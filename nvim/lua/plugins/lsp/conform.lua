@@ -20,6 +20,8 @@ return {
         json = { 'prettier' },
         jsonc = { 'prettier' },
         typescript = { 'prettier' },
+        css = { 'prettier' },
+        scss = { 'prettier' },
       },
 
       formatters = {
