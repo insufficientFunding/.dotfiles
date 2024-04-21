@@ -75,4 +75,5 @@ if vim.fn.has('nvim-0.10') == 1 then opt.smoothscroll = true end
 
 opt.updatetime = 50
 
-opt.colorcolumn = '80'
+opt.colorcolumn = '120'
+opt.textwidth = 120

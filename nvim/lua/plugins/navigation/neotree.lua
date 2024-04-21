@@ -6,8 +6,6 @@ return {
     'MunifTanjim/nui.nvim',
   },
   opts = {
-    close_if_last_window = true,
-
     source_selector = {
       --winbar = true,
     },
@@ -18,7 +16,7 @@ return {
       },
 
       indent = {
-        indent_size = 1,
+        indent_size = 2,
         padding = 0,
       },
 
@@ -93,22 +91,22 @@ return {
         ['<Tab>'] = 'next_source',
       },
     },
-    event_handlers = {
-      {
-        event = 'after_render',
-        handler = function(state)
-          if
-            state.current_position == 'left'
-            or state.current_position == 'right'
-          then
-            vim.api.nvim_win_call(state.winid, function()
-              local str = require('neo-tree.ui.selector').get()
-              if str then _G.__cached_neo_tree_selector = str end
-            end)
-          end
-        end,
-      },
-    },
+    -- event_handlers = {
+    --   {
+    --     event = 'after_render',
+    --     handler = function(state)
+    --       if
+    --         state.current_position == 'left'
+    --         or state.current_position == 'right'
+    --       then
+    --         vim.api.nvim_win_call(state.winid, function()
+    --           local str = require('neo-tree.ui.selector').get()
+    --           if str then _G.__cached_neo_tree_selector = str end
+    --         end)
+    --       end
+    --     end,
+    --   },
+    -- },
   },
   keys = {
     {

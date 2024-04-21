@@ -45,7 +45,7 @@ function M.setup()
     desc = 'Setup Lua language server with plugins',
   })
 
-  local servers = { 'lua_ls', 'tsserver', 'cssls' }
+  local servers = { 'lua_ls', 'tsserver', 'cssls', 'prismals' }
 
   for _, server in ipairs(servers) do
     lspconfig[server].setup({

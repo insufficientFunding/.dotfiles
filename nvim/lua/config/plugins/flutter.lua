@@ -11,6 +11,10 @@ function M.setup()
 
     lsp = {
       on_attach = M.on_attach,
+      settings = {
+        lineLength = 120,
+        renameFilesWithClasses = 'always',
+      },
     },
 
     dev_log = {

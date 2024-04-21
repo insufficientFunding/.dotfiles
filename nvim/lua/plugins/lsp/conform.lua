@@ -16,12 +16,13 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        dart = { 'dart_format' },
         json = { 'prettier' },
         jsonc = { 'prettier' },
         typescript = { 'prettier' },
         css = { 'prettier' },
         scss = { 'prettier' },
+        html = { 'prettier' },
+        prisma = { 'prisma-fmt' },
       },
 
       formatters = {

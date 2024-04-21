@@ -24,6 +24,7 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+       (locale)
        (audio)
        (network)
        ))
@@ -58,6 +59,17 @@
 (defpoll audio-icon :interval "1s"
   "widgets/audio-menu/scripts/volume.sh --icon")
 
+(defwidget locale []
+  (box :class "locale icon"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+       :spacing 10
+    locale
+    ))
+
+(defpoll locale :interval "2s"
+  "scripts/locale.sh")
 (defwidget network []
   (box :class "network icon"
        :orientation "h"

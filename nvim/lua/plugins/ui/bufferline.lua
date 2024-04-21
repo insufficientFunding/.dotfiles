@@ -30,8 +30,8 @@ return {
         offsets = {
           {
             filetype = 'neo-tree',
-            raw = '%{%v:lua._G.__get_selector()%} ',
-            highlight = { sep = { link = 'WinSeparator' } },
+            -- raw = '%{%v:lua._G.__get_selector()%} ',
+            -- highlight = { sep = { link = 'WinSeparator' } },
             separator = ' ',
           },
         },
