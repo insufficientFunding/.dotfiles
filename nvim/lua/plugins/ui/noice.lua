@@ -7,19 +7,16 @@ return {
     'nvim-telescope/telescope.nvim',
   },
   opts = {
-    -- lsp = {
-    --   override = {
-    --     ['vim.lsp.utils.convert_input_to_markdown_lines'] = true,
-    --     ['vim.lsp.utils.stylize_markdown'] = true,
-    --     ['cmp.entry.get_documentation'] = true,
-    --   },
-    --   hover = {
-    --     enabled = false,
-    --   },
-    --   signature = {
-    --     enabled = false,
-    --   },
-    -- },
+    lsp = {
+      override = {
+        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+        ['vim.lsp.util.stylize_markdown'] = true,
+        ['cmp.entry.get_documentation'] = true,
+      },
+      signature = {
+        enabled = true,
+      },
+    },
     cmdline = {
       view = 'cmdline',
     },
@@ -27,9 +24,9 @@ return {
       backend = 'cmp',
     },
     presets = {
-      long_message_to_split = true,
       inc_rename = true,
       command_palette = true,
+      lsp_doc_border = true,
     },
     views = {
       cmdline = {
@@ -41,6 +38,10 @@ return {
     },
   },
   config = function(_, opts)
+    require('notify').setup({
+      background_colour = '#000000',
+    })
+
     require('noice').setup(opts)
 
     require('telescope').load_extension('noice')

@@ -39,9 +39,9 @@ return function()
         winhighlight = 'Normal:CmpPmenu,CursorLine:CmpSel,Search:None',
         scrollbar = true,
       },
-      documentation = {
-        winhighlight = 'Normal:CmpDoc',
-      },
+      -- documentation = {
+      --   winhighlight = 'Normal:CmpDoc',
+      -- },
     },
     snippet = {
       expand = function(args)
@@ -116,6 +116,7 @@ return function()
       end, { 'i', 's', 'c' }),
     },
     sources = cmp.config.sources({
+      -- { name = 'nvim_lsp_signature_help' },
       {
         name = 'nvim_lsp',
         entry_filter = function(entry, _)

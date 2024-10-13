@@ -17,11 +17,6 @@ return {
   },
 
   {
-    'elkowar/yuck.vim',
-    lazy = false,
-  },
-
-  {
     enabled = false,
     dir = '~/workspace/cosco.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -49,7 +44,7 @@ return {
     },
     opts = {
       highlighter = {
-        auto_enable = true,
+        auto_enable = false,
       },
     },
   },

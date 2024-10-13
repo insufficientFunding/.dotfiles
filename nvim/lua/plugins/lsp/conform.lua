@@ -16,13 +16,9 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        json = { 'prettier' },
-        jsonc = { 'prettier' },
-        typescript = { 'prettier' },
-        css = { 'prettier' },
-        scss = { 'prettier' },
-        html = { 'prettier' },
-        prisma = { 'prisma-fmt' },
+        yaml = { 'prettierd' },
+        jsonc = { 'prettierd' },
+        css = { 'prettierd' },
       },
 
       formatters = {
@@ -36,10 +32,14 @@ return {
         },
       },
 
-      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      format_on_save = { timeout_ms = 500, lsp_format = 'fallback' },
+    },
+    format_after_save = {
+      lsp_format = 'fallback',
     },
 
-    init = function()
+    config = function(_, opts)
+      require('conform').setup(opts)
       vim.opt.formatexpr = 'v:lua.require"conform".formatexpr()'
     end,
   },

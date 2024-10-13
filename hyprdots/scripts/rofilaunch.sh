@@ -11,6 +11,7 @@ case $1 in
     d)  r_mode="drun" ;; 
     w)  r_mode="window" ;;
     f)  r_mode="filebrowser" ;;
+    p)  r_mode="power-menu" ;;
     h)  echo -e "rofilaunch.sh [action]\nwhere action,"
         echo "d :  drun mode"
         echo "w :  window mode"
@@ -18,6 +19,12 @@ case $1 in
         exit 0 ;;
     *)  r_mode="drun" ;;
 esac
+
+# if r_mode is power-menu, then 
+if [ $r_mode = "power-menu" ]; then
+  rofi -show power-menu -modi power-menu:rofi-power-menu -config "~/.config/rofi/powermenu.rasi" -no-symbols
+  exit 0
+fi
 
 
 # read hypr theme border
@@ -35,11 +42,11 @@ esac
 
 # read hypr theme icon
 
-icon_override=`gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g"`
-icon_override="configuration {icon-theme: \"${icon_override}\";}"
+# icon_override=`gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g"`
+# icon_override="configuration {icon-theme: \"${icon_override}\";}"
 
 
 # launch rofi
 
-rofi -show $r_mode -display-drun "" -theme-str "${r_override}" -theme-str "${icon_override}" -config "${roconf}"
+rofi -show $r_mode -config "${roconf}"
 

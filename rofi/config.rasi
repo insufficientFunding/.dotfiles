@@ -1,69 +1,19 @@
 configuration {
-  font: "Cascadia Code 20";
+  steal-focus: true;
+  match: "fuzzy";
+
+  modi: [drun,run,filebrowser];
+
+  display-drun: " Apps";
+  display-run: " Run";
+  display-window: " Windows";
+  display-filebrowser: " Files";
+
+  /*--- Keybindings ---*/
+  kb-mode-previous: "Alt+h";
+  kb-mode-next: "Alt+l";
 }
 
-* {
-  background: rgba(30, 30, 30, 0.2);
-
-  normal-background: transparent;
-  alternate-normal-background: transparent;
-
-  accent: rgb(235, 188, 186);
-  selected-normal-background: rgba(255, 255, 255, 0.15);
-  selected-normal-foreground: var(foreground);
-  // selected-normal-foreground: rgb(30, 40, 40);
-
-  foreground: white;
-
-  separatorcolor: transparent;
-
-  border-color: rgb(196, 167, 231);
-}
-
-window {
-  border: 3px;
-  border-radius: 15px;
-  padding: 10px;
-}
-
-listview {
-  padding: 10px;
-}
-
-display-run {
-  str: "󰅂";
-}
-
-textbox-prompt-colon {
-  str: "󰅂 ";
-}
-
-entry {
-  placeholder: "";
-}
-
-element-text {
-  vertical-align: 0.5;
-}
-
-
-num-rows, num-filtered-rows {
-  text-color: rgb(255, 88, 128);
-}
-
-element {
-  orientation: horizontal;
-  children: [ element-text, element-icon ]; 
-  spacing: 5px;
-  padding: 2px 2px 2px 25px;
-  border-radius: 50%;
-  highlight: bold italic rgb(255, 88, 128);
-}
-
-element.selected.normal {
-  border: 3px;
-}
-
-element-icon {
-  size: 1.5em;
-}
+/*--- Colors ---*/
+@import "fonts/standard.rasi"
+@import "themes/hyper.rasi"

@@ -1,9 +1,10 @@
 return {
-  'insufficientFunding/bufferline.nvim',
+  'akinsho/bufferline.nvim',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
     'nvim-neo-tree/neo-tree.nvim',
   },
+  branch = 'main',
   keys = {
     {
       '<Tab>',
@@ -26,7 +27,6 @@ return {
       options = {
         -- separator_style = 'slant',
         themable = true,
-        diagnostics = 'nvim_lsp',
         offsets = {
           {
             filetype = 'neo-tree',

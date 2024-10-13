@@ -47,6 +47,7 @@ return {
           '%1.g.dart',
           '%1.freezed.dart',
           '%1.gr.dart',
+          -- '%1%.*%.dart',
         },
       },
       ['firebase'] = {

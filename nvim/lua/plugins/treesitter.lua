@@ -39,7 +39,7 @@ return {
       })
 
       vim.filetype.add({
-        extension = { rasi = 'rasi', yuck = 'yuck' },
+        extension = { rasi = 'rasi', yuck = 'yuck', arb = 'json' },
         pattern = {
           ['.*/waybar/config'] = 'jsonc',
           ['.*/kitty/*.conf'] = 'bash',

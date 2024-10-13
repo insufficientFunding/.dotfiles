@@ -1,6 +1,7 @@
+local sus
 ---@diagnostic disable: duplicate-set-field
 return {
-  'insufficientFunding/lspsaga.nvim',
+  'nvimdev/lspsaga.nvim',
   event = 'LspAttach',
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
@@ -21,6 +22,16 @@ return {
     },
     hover = {
       max_width = 0.4,
+      enable = false,
+    },
+    signature = {
+      enable = false,
+    },
+    implement = {
+      enable = true,
+    },
+    rename = {
+      enable = false,
     },
     diagnostic = {
       max_width = 0.4,

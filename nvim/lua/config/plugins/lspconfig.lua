@@ -3,14 +3,23 @@ local M = {}
 function M.on_attach(_, bufnr)
   local which_key = require('which-key')
 
-  which_key.register(require('config.mappings')().lsp, {
+  local mappings = require('config.mappings').lsp
+  if not mappings or #mappings == 0 then return end
+
+  which_key.register(mappings, {
     mode = 'n',
     buffer = bufnr,
   })
 end
 
 function M.capabilities()
+  ---@type lsp.ClientCapabilities
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  capabilities.textDocument.signatureHelp = {
+    dynamicRegistration = true,
+    contextSupport = true,
+  }
 
   capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
@@ -36,16 +45,33 @@ function M.setup()
   vim.api.nvim_create_user_command('LuaLSPluginDev', function()
     M.setup_lua({
       enabled = true,
-      plugins = { 'nvim-cmp', 'nvim-lspconfig', 'nvim-dap-ui', 'nvim-dap' },
+      plugins = {
+        'nvim-cmp',
+        'nvim-lspconfig',
+        'cmp-nvim-lsp',
+        'nvim-dap-ui',
+        'nvim-dap',
+        'lazy.nvim',
+      },
       runtime = true,
       types = true,
-      path_strict = true,
+      path_strict = false,
     })
   end, {
     desc = 'Setup Lua language server with plugins',
   })
 
-  local servers = { 'lua_ls', 'tsserver', 'cssls', 'prismals' }
+  local servers = { 'lua_ls', 'jsonls' }
+
+  lspconfig.java_language_server.setup({
+    on_attach = M.on_attach,
+    capabilities = M.capabilities(),
+    -- settings = {
+    cmd = {
+      '/home/malware/.local/share/nvim/mason/packages/java-language-server/dist/lang_server_linux.sh',
+    },
+    -- },
+  })
 
   for _, server in ipairs(servers) do
     lspconfig[server].setup({
@@ -103,7 +129,7 @@ local function get_lua_library(opts)
     if type(opts.plugins) == 'table' then
       filter = {}
       ---@diagnostic disable-next-line: param-type-mismatch
-      for _, plugin in pairs(opts.plugins) do
+      for _, plugin in ipairs(require('lazy').plugins()) do
         filter[plugin] = true
       end
     end

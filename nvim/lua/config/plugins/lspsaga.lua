@@ -24,39 +24,62 @@ function M.on_attach(_, bufnr)
 
   opts.desc = 'Go to next diagnostic'
   vim.keymap.set('n', ']d', command('diagnostic_jump_next'), opts)
+  -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
   opts.desc = 'Go to previous diagnostic'
   vim.keymap.set('n', '[d', command('diagnostic_jump_prev'), opts)
+  -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 
   opts.desc = 'Show hover documenation'
-  vim.keymap.set('n', 'K', command('hover_doc'), opts)
+  -- vim.keymap.set('n', 'K', command('hover_doc'), opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
-  whichkey.register({
-    ['<LEADER>'] = {
-      D = {
-        command('show_workspace_diagnostics'),
-        'Open workspace diagnostics',
+  whichkey.add({
+    buffer = bufnr,
+    mode = 'n',
+    {
+      { '<LEADER>l', group = '+lsp' },
+      {
+        '<LEADER>ld',
+        command('show_line_diagnostics'),
+        desc = 'Show line diagnostics',
       },
-      l = {
-        name = '+lsp',
-        d = { command('show_line_diagnostics'), 'Show line diagnostics' },
-        D = { command('show_buf_diagnostics'), 'Show buffer diagnostics' },
-        r = { command('rename'), 'Rename' },
-        f = { '<CMD> Lspsaga finder <CR>', 'Open finder' },
-        o = { command('outline'), 'Open symbol outline' },
+      {
+        '<LEADER>lb',
+        command('show_buf_diagnostics'),
+        desc = 'Show buffer diagnostics',
       },
-      g = {
-        name = '+goto',
-        d = { command('goto_definition'), 'Go to definition' },
+      {
+        '<LEADER>lw',
+        '<CMD> Telescope diagnostics <CR>',
+        desc = 'Show workspace diagnostics',
       },
-      c = {
-        name = '+code',
-        a = { vim.lsp.buf.code_action, 'Code action' },
+      { '<LEADER>lr', ':IncRename ', desc = 'Rename' },
+      { '<LEADER>lf', '<CMD> Lspsaga finder <CR>', desc = 'Open finder' },
+      {
+        '<LEADER>lo',
+        command('outline'),
+        desc = 'Open symbol outline',
       },
     },
-  }, {
-    mode = 'n',
-    buffer = bufnr,
+    {
+      { '<LEADER>g', group = '+goto' },
+      { '<LEADER>gd', vim.lsp.buf.definition, desc = 'Go to definition' },
+    },
+    {
+      mode = { 'n', 'v' },
+      { '<LEADER>c', group = '+code' },
+      {
+        '<LEADER>ca',
+        vim.lsp.buf.code_action,
+        desc = 'Code action',
+      },
+    },
+    {
+      '<LEADER>D',
+      command('show_workspace_diagnostics'),
+      desc = 'Open workspace diagnostics',
+    },
   })
 end
 

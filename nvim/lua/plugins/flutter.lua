@@ -1,6 +1,6 @@
 return {
-  dir = '~/workspace/flutter-tools.nvim',
-  -- 'akinsho/flutter-tools.nvim',
+  -- dir = '~/workspace/flutter-tools.nvim',
+  'akinsho/flutter-tools.nvim',
   event = { 'BufReadPre *.dart' },
   dependencies = {
     'nvim-lua/plenary.nvim',

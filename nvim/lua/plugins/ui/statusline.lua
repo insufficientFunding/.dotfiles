@@ -7,7 +7,7 @@ return {
   opts = function()
     return {
       options = {
-        theme = require('base46.integrations.lualine')(),
+        theme = 'onedark',
         icons_enabled = true,
         component_separators = '|',
         section_separators = { left = '', right = '' },

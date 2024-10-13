@@ -14,6 +14,8 @@ function M.setup()
       settings = {
         lineLength = 120,
         renameFilesWithClasses = 'always',
+        suggestFromUnimportedLibraries = false,
+        completeFunctionCalls = false,
       },
     },
 
@@ -21,27 +23,27 @@ function M.setup()
       enabled = true,
     },
 
-    debugger = {
-      enabled = false,
-      run_via_dap = false,
-      register_configurations = function(_)
-        require('dap').adapters.dart = {
-          type = 'executable',
-          command = 'flutter',
-          args = { 'debug_adapter' },
-        }
-
-        require('dap').configurations.dart = {
-          {
-            type = 'dart',
-            request = 'launch',
-            name = 'Launch flutter',
-            program = '${workspaceFolder}/lib/main.dart',
-            cwd = '${workspaceFolder}',
-          },
-        }
-      end,
-    },
+    -- debugger = {
+    --   enabled = false,
+    --   run_via_dap = false,
+    --   register_configurations = function(_)
+    --     require('dap').adapters.dart = {
+    --       type = 'executable',
+    --       command = 'flutter',
+    --       args = { 'debug_adapter' },
+    --     }
+    --
+    --     require('dap').configurations.dart = {
+    --       {
+    --         type = 'dart',
+    --         request = 'launch',
+    --         name = 'Launch flutter',
+    --         program = '${workspaceFolder}/lib/main.dart',
+    --         cwd = '${workspaceFolder}',
+    --       },
+    --     }
+    --   end,
+    -- },
   })
 
   require('telescope').load_extension('flutter')

@@ -37,7 +37,7 @@ opt.smartcase = true
 opt.backspace = 'indent,eol,start'
 
 opt.list = true
-opt.listchars:append('tab:▷\\')
+opt.listchars:append('tab:-»')
 opt.listchars:append('eol: ') --󰌑')
 opt.listchars:append('trail:·')
 opt.listchars:append('lead:·')
@@ -61,6 +61,10 @@ vim.opt.fillchars:append({
   vertright = '├',
   verthoriz = '┼',
   eob = ' ',
+  fold = ' ',
+  foldopen = '',
+  foldsep = ' ',
+  foldclose = '',
 })
 
 opt.termguicolors = true
@@ -68,6 +72,7 @@ opt.termguicolors = true
 opt.scrolloff = 3
 opt.sidescrolloff = 3
 
+opt.foldcolumn = 'auto'
 opt.signcolumn = 'yes'
 opt.isfname:append('@-@')
 
@@ -77,3 +82,11 @@ opt.updatetime = 50
 
 opt.colorcolumn = '120'
 opt.textwidth = 120
+
+vim.cmd([[
+  augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave *.* if &ft
+    autocmd BufWinEnter * silent! loadview
+  augroup END
+]])
