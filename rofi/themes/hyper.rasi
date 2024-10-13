@@ -1,0 +1,106 @@
+@import "colors/rose.rasi"
+
+/*--- Layout ---*/
+window {
+  transparency: "real";
+  width: 20%;
+  border: 0px;
+  border-radius: 16px;
+  padding: 0.25em;
+}
+
+mainbox {
+  children: [inputbar, message, listview, mode-switcher];
+}
+
+listview, message {
+  padding: 0.5em;
+  border: 0px;
+  spacing: 4px;
+}
+
+element {
+  children: [element-icon, element-text];
+}
+
+element, element-text, element-icon, button {
+  cursor: pointer;
+}
+
+
+scrollbar {
+  width: 4px;
+  padding: 0;
+  handle-width: 6px;
+  border-radius: 50%;
+  handle-color: var(selected-background);
+}
+
+/*--- Input Bar ---*/
+inputbar {
+  spacing: 0.2em;
+  border-radius: 8px;
+  background-color: var(selected-background);
+  margin: 0.5em 10px 0px 10px;
+  children: [textbox-prompt-colon, entry, overlay, case-indicator];
+}
+
+textbox-prompt-colon {
+  str: "";
+  padding: 0.5em 0.4em 0.5em 0.6em;
+}
+
+entry {
+  placeholder: "Search";
+  placeholder-color: var(dim-foreground);
+  padding: 0.5em 0em;
+  cursor: text;
+}
+
+case-indicator {
+  enabled: true;
+  text-color: var(dim-foreground);
+}
+
+/*--- Element ---*/
+element {
+  background-color: transparent;
+  padding: 8px;
+  border-radius: 8px;
+  highlight: bold italic #f8f8f2;
+}
+
+element.normal.normal, element.normal.urgent, element.normal.active {
+  background-color: transparent;
+}
+
+element.selected.normal, element.selected.urgent, element.selected.active {
+  background-color: var(selected-background);
+}
+
+element.alternate.normal, element.alternate.urgent, element.alternate.active {
+  background-color: transparent;
+}
+
+element-text {
+  highlight: underline bold #fadb8c;
+}
+
+/*--- Mode Switcher & Buttons ---*/
+mode-switcher {
+  spacing: 0.25em;
+}
+
+button {
+  padding: 0.5em;
+  border-radius: 10px;
+  background-color: var(alternate-background);
+  text-color: var(foreground);
+  font: var(font);
+}
+
+button selected {
+  background-color: var(selected-background);
+  font: var(bold-font);
+  text-color: var(accent);
+}

@@ -1,0 +1,5 @@
+* {
+  font: "Urbanist 16";
+  bold-font: "Urbanist Extra Bold 16";
+  large-font: "Urbanist 26";
+}

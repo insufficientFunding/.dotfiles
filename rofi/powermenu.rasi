@@ -1,0 +1,11 @@
+configuration {
+  show-icons: false;
+  hover-select: true;
+
+  me-select-entry: "";
+  me-accept-entry: [MousePrimary, MouseSecondary, MouseDPrimary];
+}
+
+@import "colors/rose.rasi"
+@import "fonts/standard.rasi"
+@import "powermenu/hyper.rasi"
