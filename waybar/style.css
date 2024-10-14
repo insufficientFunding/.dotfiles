@@ -1,33 +1,86 @@
 * {
   border: none;
   border-radius: 0px;
-  font-family: "JetBrainsMono Nerd Font";
-  font-weight: bold;
+  font-family: "Helvetica Now Text";
   font-size: 16px;
   min-height: 10px;
 }
 
-@define-color background rgba(42, 38, 64, 0.62);
-@define-color alternate-background rgba(53, 48, 80, 0.31);
-@define-color selected-background rgba(63, 57, 80, 0.31);
-@define-color foreground rgba(248, 248, 242, 0.94);
-@define-color dim-foreground rgba(248, 248, 242, 0.27);
+@define-color background rgba(42, 38, 64, 1);
+@define-color hover-background rgba(58, 53, 86, 1);
+@define-color alternate-background rgba(53, 48, 80, 1);
+@define-color selected-background rgba(63, 57, 80, 1);
+@define-color foreground rgba(248, 248, 242, 1);
+@define-color dim-foreground rgba(248, 248, 242, 0.5);
 @define-color accent rgba(246, 193, 119, 1);
+@define-color accent-saturated rgba(210, 163, 90, 1);
 
 window#waybar {
+  background-color: transparent;
+}
+
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#clock,
+#tray,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#language,
+#window {
   background-color: @background;
-  padding: 4px;
+  margin: 10px 0px 0px 0px;
+}
+
+/* -< Ends >- */
+#custom-padd {
+  padding: 0 2px;
+}
+
+#custom-l_end {
+  border-radius: 50px 0 0 50px;
+  padding: 0 10px;
+}
+
+#custom-r_end {
+  border-radius: 0 50px 50px 0;
+  padding: 0 10px;
+}
+
+#language {
+  border-radius: 50px;
+  padding: 5px 18px;
+  font-size: 14px;
+}
+
+#workspaces {
+  border-radius: 50px 0 0 50px;
+  padding: 5px;
+}
+
+#clock {
+  font-size: 24px;
+}
+
+#cpu {
+  padding: 0px 14px 0px 0px;
 }
 
 #workspaces button {
-  background-color: @background;
+  background-color: @alternate-background;
   color: @foreground;
   padding: 0px 8px;
-  margin: 4px;
+  margin: 0px 5px 0px 0px;
   border-radius: 50%;
 }
 
+#workspaces button:hover {
+  background-color: @hover-background;
+}
+
 #workspaces button.active {
-  background-color: @selected-background;
-  color: @accent;
+  background-color: @accent-saturated;
+  color: @background;
 }

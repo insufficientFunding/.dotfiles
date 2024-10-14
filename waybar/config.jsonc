@@ -6,24 +6,78 @@
   "layer": "top",
   "position": "",
   "mod": "dock",
-  "height": 38,
+  "height": 50,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  // "reload_style_on_change": true,
+  "reload_style_on_change": true,
 
   // positions generated based on config.ctl //
 
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["custom/padd", "clock", "custom/padd"],
-  "modules-right": ["custom/padd", "", "custom/padd"],
-
-  // sourced from modules based on config.ctl //
-
-  // modules for padding //
+  "modules-left": [
+    // "custom/l_end",
+    "custom/padd",
+    "hyprland/workspaces",
+    "hyprland/window",
+    "custom/r_end",
+    "custom/padd",
+    "hyprland/language"
+  ],
+  "modules-center": ["custom/l_end", "clock", "custom/r_end"],
+  "modules-right": [
+    "custom/l_end",
+    "cpu",
+    "memory",
+    "custom/r_end",
+    //
+    "custom/padd",
+    "custom/l_end",
+    "battery",
+    "pulseaudio",
+    "custom/r_end",
+    "custom/padd",
+    "custom/l_end",
+    "tray",
+    "custom/r_end",
+    "custom/padd"
+  ],
 
   "hyprland/workspaces": {
     "format": "{name}"
+  },
+
+  "hyprland/language": {},
+
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*) - Google Chrome": "Chrome"
+    },
+    "icon": true,
+    "icon-size": 20
+  },
+
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "tooltip": true,
+    "tooltip-format": "{volume}% {muted}",
+    "tooltip-mute": "Muted",
+    "tooltip-volume": "{volume}%",
+    "tooltip-unmute": "Unmuted",
+    "tooltip-icon": "audio-volume-high-symbolic"
+  },
+
+  "cpu": {
+    "format": "  {usage}%"
+  },
+
+  "memory": {
+    "format": "  {used} / {total} GB"
+  },
+
+  "tray": {
+    "spacing": 9
   },
 
   "custom/l_end": {
@@ -38,32 +92,8 @@
     "tooltip": false
   },
 
-  "custom/sl_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/sr_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/rl_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false
-  },
-
-  "custom/rr_end": {
-    "format": " ",
-    "interval": "once",
-    "tooltip": false
-  },
-
   "custom/padd": {
-    "format": "  ",
+    "format": " ",
     "interval": "once",
     "tooltip": false
   }
